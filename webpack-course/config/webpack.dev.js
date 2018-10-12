@@ -32,6 +32,32 @@ module.exports = {
     // 设置热更新服务内容
     devServer: {
         // 设置默认启动文件夹
-        contentBase: "dist"
+        contentBase: "dist",
+        
+        // 设置错误提示是否在页面中显示
+        overlay: true
+    },
+
+    // 配置 loader 加载器内容
+    module: {
+        // 配置 loader 加载器的规则
+        rules: [
+            // 配置 css 及 style 的加载器内容
+            {
+                // 该 loader 加载器对应解析到文件后缀名
+                test: /\.css$/,
+                // 该 loader 需要使用到配置方案
+                use: [
+                    {
+                        // 配置 style-loader 加载器
+                        loader: "style-loader"
+                    },
+                    {
+                        // 配置 css-loader 加载器
+                        loader: "css-loader"
+                    }
+                ]
+            }
+        ]
     }
 }

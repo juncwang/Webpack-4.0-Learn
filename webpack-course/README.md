@@ -28,3 +28,18 @@
         * `npm install webpack webpack-cli webpack-dev-server`
     * 命令行启动热更新功能
         * `webpack-dev-server --config=config/webpack.dev.js`
+
+* 安装 CSS loader 及配置 loader 方法
+    * 命令行安装命令
+        * `npm install style-loader css-loader`
+    * 配置 style-loader 及 css-loader
+        * 详见 config/webpack.dev.js
+    * js 文件加载 其他 文件方法
+        * `require("./xxx.css")`
+        * `require("./xxx.html")`
+
+* 配置 npm 命令
+    * 在 package.json 文件内的 script 项下配置
+        * `"命令名称": "实际终端命令的语句"`
+        * 在终端就可以使用 `npm 命令名称` 或者 `npm run 命令名称` 来执行: `世纪终端命令的语句`
+        * 详见 package.json 文件内的 script 项
