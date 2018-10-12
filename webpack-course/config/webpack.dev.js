@@ -57,7 +57,59 @@ module.exports = {
                         loader: "css-loader"
                     }
                 ]
+            },
+
+            // 配置 HTML 的加载器内容
+            {
+                // 该 loader 加载器对应解析到文件后缀名
+                test: /\.html$/,
+                // 该 loader 需要使用到配置方案
+                use: [
+                    {
+                        // 配置文件输出的文件路径及名字, 放在 dist 文件夹下
+                        loader: "file-loader",
+                        // 配置参数 
+                        options: {
+                            // 配置输出到文件名: [name] 表示原文件名
+                            name: "[name].html"
+                        }
+                    },
+                    {
+                        // 配置分离属性, 它把 html 文件与引入它到 js 文件分离开成为单独的 html 文件
+                        loader: "extract-loader"
+                    },
+                    {
+                        // 配置 html 的加载器
+                        loader: "html-loader",
+                        // 配置参数 
+                        options: {
+                            attrs: ["img:src"]
+                        }
+                    }
+                ]
+            },
+
+            // 配置 图片 的价值内容
+            {
+                // 该 loader 加载器对应解析到文件后缀名
+                test: /\.(jpg|gif|png)$/,
+                // 该 loader 需要使用到配置方案
+                use: [
+                    {
+                        // 配置文件输出的文件路径及名字, 放在 dist 文件夹下
+                        loader: "file-loader",
+                        // 配置参数 
+                        options: {
+                            // 配置输出到文件名: [name] 表示原文件名, 【ext] 表示原后缀名
+                            name: "images/[name].[ext]"
+                            // 【hash:8] 输出名会增加一个 8 位到哈希值
+                            // name: "images/[name]-[hash:8].[ext]"
+                        }
+                    }
+                ]
             }
+
+
         ]
     }
 }

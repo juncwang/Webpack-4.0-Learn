@@ -32,11 +32,18 @@
 * 安装 CSS loader 及配置 loader 方法
     * 命令行安装命令
         * `npm install style-loader css-loader`
-    * 配置 style-loader 及 css-loader
+    * 配置 CSS 文件的方法
         * 详见 config/webpack.dev.js
-    * js 文件加载 其他 文件方法
-        * `require("./xxx.css")`
-        * `require("./xxx.html")`
+
+* 安装 HTML 及 图片 loader 及配置 loader 方法
+    * 命令行安装命令
+        * `npm install html-loader extract-loader file-loader`
+    * 配置 HTML 及 图片 文件的方法
+        * 详见 config/webpack.dev.js
+
+* js 文件加载 其他 文件方法
+    * `require("./xxx.css")`
+    * `require("./xxx.html")`
 
 * 配置 npm 命令
     * 在 package.json 文件内的 script 项下配置
