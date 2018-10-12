@@ -32,6 +32,6 @@ module.exports = {
     // 设置热更新服务内容
     devServer: {
         // 设置默认启动文件夹
-        contendBase: "dist"
+        contentBase: "dist"
     }
 }
