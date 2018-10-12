@@ -17,7 +17,7 @@ module.exports = {
     output: {
         // 设置出口文件名称
         filename: "bundle.js",
-        // 可以使用以下方式设置出口文件名称, 设置后出口文件名为 main-bundle.js
+        // 可以使用以下方式设置出口文件名称, [name] 表示原文件名, 设置后出口文件名为 main-bundle.js
         // filename: "[name]-bundle.js"
 
         // 输出路径设置到 dist 文件夹下
@@ -83,6 +83,7 @@ module.exports = {
                         loader: "html-loader",
                         // 配置参数 
                         options: {
+                            // 配置 HTML 的 图片属性, 便于图片加载
                             attrs: ["img:src"]
                         }
                     }
