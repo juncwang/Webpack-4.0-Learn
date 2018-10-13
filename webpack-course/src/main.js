@@ -1,6 +1,6 @@
 // alert("hello world!")
 
-// 将 css 文件引入到 js
+// 将文件引入到 js
 require("babel-runtime/regenerator")
 require("./main.css")
 require("./index.html")

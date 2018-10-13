@@ -117,7 +117,7 @@ module.exports = {
                         options: {
                             // 配置输出到文件名: [name] 表示原文件名, [ext] 表示原后缀名
                             name: "images/[name].[ext]"
-                            // 【hash:8] 输出名会增加一个 8 位到哈希值
+                            // [hash:8] 输出名会增加一个 8 位到哈希值
                             // name: "images/[name]-[hash:8].[ext]"
                         }
                     }
