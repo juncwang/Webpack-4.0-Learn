@@ -7,7 +7,7 @@ module.exports = {
     entry: {
         main : "./src/main.js",
         // 多个入口文件可以用中括号包裹, 并且用逗号隔开
-        // main : [ "./src/main.js", "./src/index.js"]
+        // main : [ "babel-polyfill", "./src/main.js"]
     },
 
     // 打包环境设置: 开发 development & 生产 production
@@ -42,11 +42,25 @@ module.exports = {
     module: {
         // 配置 loader 加载器的规则
         rules: [
+            // 配置 babel 的加载器内容
+            {
+                // 该 loader 加载器对应解析的文件后缀名
+                test: /\.js$/,
+                // 该 loader 需要使用到的配置方案
+                use: [
+                    {
+                        loader: "babel-loader"
+                    }
+                ],
+                // 该 loader 需要忽略的文件夹
+                exclude: /node_modules/
+            },
+
             // 配置 css 及 style 的加载器内容
             {
                 // 该 loader 加载器对应解析到文件后缀名
                 test: /\.css$/,
-                // 该 loader 需要使用到配置方案
+                // 该 loader 需要使用到的配置方案
                 use: [
                     {
                         // 配置 style-loader 加载器
@@ -63,7 +77,7 @@ module.exports = {
             {
                 // 该 loader 加载器对应解析到文件后缀名
                 test: /\.html$/,
-                // 该 loader 需要使用到配置方案
+                // 该 loader 需要使用到的配置方案
                 use: [
                     {
                         // 配置文件输出的文件路径及名字, 放在 dist 文件夹下
@@ -94,14 +108,14 @@ module.exports = {
             {
                 // 该 loader 加载器对应解析到文件后缀名
                 test: /\.(jpg|gif|png)$/,
-                // 该 loader 需要使用到配置方案
+                // 该 loader 需要使用到的配置方案
                 use: [
                     {
                         // 配置文件输出的文件路径及名字, 放在 dist 文件夹下
                         loader: "file-loader",
                         // 配置参数 
                         options: {
-                            // 配置输出到文件名: [name] 表示原文件名, 【ext] 表示原后缀名
+                            // 配置输出到文件名: [name] 表示原文件名, [ext] 表示原后缀名
                             name: "images/[name].[ext]"
                             // 【hash:8] 输出名会增加一个 8 位到哈希值
                             // name: "images/[name]-[hash:8].[ext]"
