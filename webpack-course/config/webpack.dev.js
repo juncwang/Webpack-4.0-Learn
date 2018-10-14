@@ -1,5 +1,6 @@
 // 使用 nodejs 的 path 模块
 const path = require("path")
+import webpack from "webpack"
 
 module.exports = {
 
@@ -33,7 +34,8 @@ module.exports = {
     devServer: {
         // 设置默认启动文件夹
         contentBase: "dist",
-        
+        // 开启热更新服务器
+        hot: true,
         // 设置错误提示是否在页面中显示
         overlay: true
     },
@@ -126,5 +128,8 @@ module.exports = {
 
 
         ]
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+    ]
 }

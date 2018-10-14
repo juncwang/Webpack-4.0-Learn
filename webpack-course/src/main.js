@@ -2,6 +2,7 @@
 
 // 将文件引入到 js
 require("babel-runtime/regenerator")
+require("webpack-hot-middleware/client")
 require("./main.css")
 require("./index.html")
 

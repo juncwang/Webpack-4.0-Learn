@@ -26,12 +26,16 @@
     * 配置说明详见 config/webpack.dev.js 备注
     * 命令行打包语句进行打包
         * `webpack --config=config/webpack.dev.js`
+        * 配置打包命令 
+        * package.json 文件内的 script 项内配置 `"build": "webpack --config=config/webpack.dev.js"`
 
 * 安装本地 webpack 实现热更新功能并启动
     * 命令行安装本地 webpack
         * `npm install webpack webpack-cli webpack-dev-server`
     * 命令行启动热更新功能
         * `webpack-dev-server --config=config/webpack.dev.js`
+        * 配置热更新启动命令 
+        * package.json 文件内的 script 项内配置 `"start": "webpack-dev-server --config=config/webpack.dev.js"`
 
 * 安装 CSS loader 及配置 loader 方法
     * 命令行安装命令
@@ -45,15 +49,9 @@
     * 配置 HTML 及 图片 文件的方法
         * 详见 config/webpack.dev.js
 
-* js 文件加载 其他 文件方法
+* 文件加载方法
     * `require("./xxx.css")`
     * `require("./xxx.html")`
-
-* 配置 npm 命令
-    * 在 package.json 文件内的 script 项下配置
-        * `"命令名称": "实际终端命令的语句"`
-        * 在终端就可以使用 `npm 命令名称` 或者 `npm run 命令名称` 来执行: `世纪终端命令的语句`
-        * 详见 package.json 文件内的 script 项
 
 * 安装 BABEL 及配置 loader 方法
     * 命令行安装命令
@@ -88,4 +86,39 @@
                 * 如果看到这样的问题请把 babel-loader 安装换成以下命令
                     * `npm install babel-loader@7`
         * 配置方法详见 config/webpack.dev.js 文件
+
+### 配置 npm 命令
+    * 在 package.json 文件内的 script 项下配置
+        * `"命令名称": "实际终端命令的语句"`
+        * 在终端就可以使用 `npm 命令名称` 或者 `npm run 命令名称` 来执行: `世纪终端命令的语句`
+        * 详见 package.json 文件内的 script 项
     
+### 搭建后端服务程序
+
+* 安装 express 后段服务及配置
+    * 执行以下命令行命令:
+        * `npm install express` 安装 express
+    * 配置 express 文件
+        * 在 src 文件夹下创建 server 文件夹
+        * 在 server 文件夹下 创建 main.js 服务器入口文件 及 express.js 服务器配置文件
+        * 配置服务器启动命令
+        * package.json 文件内的 script 项内配置 `"dev": "node src/server/main.js"`
+    * 配置 main.js 文件
+        * 引入 `require("babel-register")` 可以在服务器端转义 es6 语法
+        * 引入 `require("./express")` 加入服务器配置文件
+    * 配置 express.js 文件
+        * 详见 src/express.js 文件
+
+* 安装插件实现服务器启动后热更新功能
+    * 监听代码插件安装及配置: 
+        * `npm install webpack-dev-middleware` 安装插件
+        * 配置详见 src/express.js 文件 监听代码
+    * 热更新插件安装及配置:
+        * `npm install webpack-hot-middleware` 安装插件
+        * 配置详见 src/express.js 文件 热更新服务
+    * 配置 config/webpack.dev.js
+        * 在开始引入 `import webpack from "webpack"`
+        * 在 `module.exports` 内的 `DevServer` 内加入热更新功能 `hot: true`
+        * 在 `module.exports` 内的 `plugins` 内加入热更新插件 `new webpack.HotModuleReplacementPlugin()`
+    * 配置 src/main.js 
+        * 在 `require("babel-runtime/regenerator")` 下面一行引入 `require("webpack-hot-middleware/client")`
