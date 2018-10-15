@@ -1,6 +1,7 @@
 // 使用 nodejs 的 path 模块
 const path = require("path")
 import webpack from "webpack"
+const HTMLWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
 
@@ -39,6 +40,8 @@ module.exports = {
         // 设置错误提示是否在页面中显示
         overlay: true
     },
+    // 配置本地调试工具
+    devtool: "source-map",
 
     // 配置 loader 加载器内容
     module: {
@@ -81,19 +84,19 @@ module.exports = {
                 test: /\.html$/,
                 // 该 loader 需要使用到的配置方案
                 use: [
-                    {
-                        // 配置文件输出的文件路径及名字, 放在 dist 文件夹下
-                        loader: "file-loader",
-                        // 配置参数 
-                        options: {
-                            // 配置输出到文件名: [name] 表示原文件名
-                            name: "[name].html"
-                        }
-                    },
-                    {
-                        // 配置分离属性, 它把 html 文件与引入它到 js 文件分离开成为单独的 html 文件
-                        loader: "extract-loader"
-                    },
+                    // {
+                    //     // 配置文件输出的文件路径及名字, 放在 dist 文件夹下
+                    //     loader: "file-loader",
+                    //     // 配置参数 
+                    //     options: {
+                    //         // 配置输出到文件名: [name] 表示原文件名
+                    //         name: "[name].html"
+                    //     }
+                    // },
+                    // {
+                    //     // 配置分离属性, 它把 html 文件与引入它到 js 文件分离开成为单独的 html 文件
+                    //     loader: "extract-loader"
+                    // },
                     {
                         // 配置 html 的加载器
                         loader: "html-loader",
@@ -131,5 +134,8 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new HTMLWebpackPlugin({
+            template: "./src/index.html"
+        })
     ]
 }

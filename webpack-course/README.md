@@ -109,7 +109,7 @@
     * 配置 express.js 文件
         * 详见 src/express.js 文件
 
-* 安装插件实现服务器启动后热更新功能
+* 安装插件实现服务器启动后 css js 代码热更新功能
     * 监听代码插件安装及配置: 
         * `npm install webpack-dev-middleware` 安装插件
         * 配置详见 src/express.js 文件 监听代码
@@ -122,3 +122,25 @@
         * 在 `module.exports` 内的 `plugins` 内加入热更新插件 `new webpack.HotModuleReplacementPlugin()`
     * 配置 src/main.js 
         * 在 `require("babel-runtime/regenerator")` 下面一行引入 `require("webpack-hot-middleware/client")`
+
+* 安装插件实现服务器启动后 config/webpack.dev.js 代码热更新功能
+    * 监听代码插件安装及配置
+        * `npm install nodemon -g` 安装插件
+        * 把 package.json 文件下的 script 下的 dev 内容更改为以下 `"dev": "nodemon --watch config --watch src/server src/server/main.js"`
+
+* 安装插件实现服务器启动后 html 代码热更新功能
+    * 监听代码插件安装及配置
+        * `npm install html-webpack-plugin` 安装插件
+    * 在 config/webpack.dev.js 内进行引入及配置
+        * 在头部引入 `const HTMLWebpackPlugin = require("html-webpack-plugin")`
+        * 在 module.exports 内的 plugins 内增加 `new HTMLWebpackPlugin({template: "./src/index.html"})`
+        * 在 src/main.js 文件引入中更改以下引入内容 `require("webpack-hot-middleware/client?reload=true")`
+
+### 利用 node webpack chrome 实现调试功能
+* 添加调试工具 inspect
+    * 把 package.json 文件下的 script 下的 dev 内容更改为以下 `"dev": "nodemon --inspect --watch config --watch src/server src/server/main.js"`
+    * 使用 debugger 可以对代码进行断点设置
+        * 后端通过浏览器调试工具内 增加的 inspect 进行调试
+        * 前端通过浏览器调试工具进行调试
+            * 如果想看到浏览器调试代码和对应文件代码一致, 需要在 config/webpack.dev.js 内的 module.exports 项内增加
+                * `devtool: "source-map"`
