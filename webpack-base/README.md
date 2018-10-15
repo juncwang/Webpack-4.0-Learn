@@ -14,6 +14,16 @@
     * `npm install html-webpack-plugin`
 4. package.json 文件下的 script 下增加以下内容
     * `"dev": "nodemon --inspect --watch config --watch src/server src/server/main.js"`
+    * `"build": "webpack --config=config/webpack.dev.js"`
+    * `"start": "webpack-dev-server --config=config/webpack.dev.js"`
+
+### 构建输出文件
+* 在 config/webpack.dev.js 文件中把以下两行代码注释掉
+    * `import webpack from "webpack"`
+    * `new webpack.HotModuleReplacementPlugin(),`
+* 注释完成后就可以执行
+    * `npm run build` 构建输出文件
+    * `npm run start` 本地启动热更新代码
 
 ### 具体详细信息请看 webpack-course 文档
 
