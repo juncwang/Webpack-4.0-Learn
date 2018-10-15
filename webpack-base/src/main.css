@@ -1,0 +1,26 @@
+body {
+    /* color: red; */
+    margin: 0;
+    background: #333;
+}
+
+.profile {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+}
+
+img {
+    width: 400px;
+    border-radius: 100%;
+    box-shadow: 0 0 20px black;
+}
+
+h1 {
+    color: white;
+    font-size: 4em;
+    font-family: sans-serif;
+    text-shadow: 0 0 20px black;
+}
