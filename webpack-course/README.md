@@ -133,6 +133,7 @@
         * `npm install html-webpack-plugin` 安装插件
     * 在 config/webpack.dev.js 内进行引入及配置
         * 在头部引入 `const HTMLWebpackPlugin = require("html-webpack-plugin")`
+        * 在 module.exports 内 module 中 rules 内的: 配置 HTML 的加载器内容内 去掉 file-loader 及 extract-loader, 详见 config/webpack.dec.js
         * 在 module.exports 内的 plugins 内增加 `new HTMLWebpackPlugin({template: "./src/index.html"})`
         * 在 src/main.js 文件引入中更改以下引入内容 `require("webpack-hot-middleware/client?reload=true")`
 
