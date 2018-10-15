@@ -145,3 +145,11 @@
         * 前端通过浏览器调试工具进行调试
             * 如果想看到浏览器调试代码和对应文件代码一致, 需要在 config/webpack.dev.js 内的 module.exports 项内增加
                 * `devtool: "source-map"`
+
+### 配置完成后 重新构建输出文件
+* 在 config/webpack.dev.js 文件中把以下两行代码注释掉
+    * `import webpack from "webpack"`
+    * `new webpack.HotModuleReplacementPlugin(),`
+* 注释完成后就可以执行
+    * `npm run build` 构建输出文件
+    * `npm run start` 本地启动热更新代码
