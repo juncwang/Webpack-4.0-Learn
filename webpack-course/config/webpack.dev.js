@@ -134,6 +134,7 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        // 该插件将自动将 主 js 文件注入到 html 文件内
         new HTMLWebpackPlugin({
             // 网页入口文件设置, 设置后 src/main.js 引入 index.html 时就会调用以下的文件路径
             // 而不是直接使用 index.html
