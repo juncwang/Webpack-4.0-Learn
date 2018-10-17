@@ -4,6 +4,7 @@
 2. 安装以下需要的全局组件
     * `npm install webpack webpack-cli webpack-dev-server -g`
     * `npm install express -g`
+    * `npm install nodemon -g`
 3. 安装以下需要的组件
     * `npm install webpack webpack-cli webpack-dev-server`
     * `npm install style-loader css-loader`

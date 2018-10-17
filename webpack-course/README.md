@@ -97,7 +97,7 @@
 
 * 安装 express 后段服务及配置
     * 执行以下命令行命令:
-        * `npm install express` 安装 express
+        * `npm install express -g` 安装 express
     * 配置 express 文件
         * 在 src 文件夹下创建 server 文件夹
         * 在 server 文件夹下 创建 main.js 服务器入口文件 及 express.js 服务器配置文件
