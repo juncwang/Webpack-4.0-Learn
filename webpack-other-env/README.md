@@ -41,11 +41,32 @@
     * 做完以上两步就能前端网页图片就能得到 `hash` 值了
 
 ### 使用 sass 环境
-
-
+* 创建 `sass` 文件 `src/main.sass`
+    * 在 `src/main.js` 引入 `require("./main.sass")`
+* 安装 sass 命令如下
+    * `npm install node-sass sass-loader`
+* 配置 `config/webpack.dev.js` 内配置 loader
+    * 在 `config/webpack.dev.js` 内配置 `module` 内的 `rules` 内增加一个 `loader` 对象
+    * 内容如下
+        * `{test:/\.sass$/,use:{loader:"style-loader"},{loader:"css-loader"},{loader:"sass-loader"}}`
 
 ### 使用 less 环境
+* 创建 `less` 文件 `src/main.less`
+    * 在 `src/main.js` 引入 `require("./main.less")`
+* 安装 less 命令如下
+    * `npm install less less-loader`
+* 配置 `config/webpack.dev.js` 内配置 loader
+    * 在 `config/webpack.dev.js` 内配置 `module` 内的 `rules` 内增加一个 `loader` 对象
+    * 内容如下
+        * `{test:/\.less$/,use:{loader:"style-loader"},{loader:"css-loader"},{loader:"less-loader"}}`
 
 
-
-### 使用 styl 环境
+### 使用 stylus 环境
+* 创建 `stylus` 文件 `src/main.styl`
+    * 在 `src/main.js` 引入 `require("./main.styl")`
+* 安装 stylus 命令如下
+    * `npm install stylus stylus-loader`
+* 配置 `config/webpack.dev.js` 内配置 loader
+    * 在 `config/webpack.dev.js` 内配置 `module` 内的 `rules` 内增加一个 `loader` 对象
+    * 内容如下
+        * `{test:/\.styl$/,use:{loader:"style-loader"},{loader:"css-loader"},{loader:"stylus-loader"}}`
