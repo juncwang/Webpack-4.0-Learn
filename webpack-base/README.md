@@ -27,7 +27,7 @@
     * `npm run start` 本地启动热更新代码
 
 ### 具体详细信息请看 webpack-course 文档
-### 需要增加其他环境配置请看 webpack-other-env 文档
+### 需要增加其他环境及配置请看 webpack-other-env 文档
 
 
 

@@ -70,3 +70,51 @@
     * 在 `config/webpack.dev.js` 内配置 `module` 内的 `rules` 内增加一个 `loader` 对象
     * 内容如下
         * `{test:/\.styl$/,use:{loader:"style-loader"},{loader:"css-loader"},{loader:"stylus-loader"}}`
+
+
+
+        
+
+### 忽略后缀名的配置与路径扩展符合的配置
+* 在 webpack.config.js 配置文件内的 module.exports 内引入配置如下
+```javascript
+resolve: {
+    extensions: [ ".js", ".jsx", ".json", ".css"],
+    // 表示这几个后缀名可以忽略
+    // "./src/components/文件名"
+    alias: {    //表示别名
+        "@": require("path").join(__dirname, "./src")
+        // 这样 @ 就表示项目根目录中的 src 的这一层路径
+        // "@/components/文件名"
+    }
+}
+```
+
+### 自动增加浏览器兼容前缀
+* 安装以下命令
+    * `npm install postcss postcss-loader`
+* 配置 `config/webpack.dev.js` 内配置 loader
+    * 在 `config/webpack.dev.js` 内配置 `module` 内的 `rules` 内所使用的样式 loader (`css`,`less`,`sass`,`stylus`)内增加
+        * `{loader: "postcss-loader"}`
+* 例子: 
+```javascript
+{
+                // 该 loader 加载器对应解析到文件后缀名
+                test: /\.css$/,
+                // 该 loader 需要使用到的配置方案
+                use: [
+                    {
+                        // 配置 style-loader 加载器
+                        loader: "style-loader"
+                    },
+                    {
+                        // 配置 css-loader 加载器
+                        loader: "css-loader"
+                    },
+                    {
+                        // 配置浏览器兼容前缀
+                        loader: "postcss-loader"
+                    }
+                ]
+            }
+```
